@@ -42,7 +42,7 @@
 
 })( jQuery );
 
-/*
+/*!
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
  * Uses the built in easing capabilities added In jQuery 1.1
@@ -133,5 +133,32 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeI
 
     // Initialize WOW.js Scrolling Animations
     new WOW().init();
-
+        
 })(jQuery); // End of use strict
+
+function initMap() {
+  // Basic options for a simple Google Map
+  // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+  var mapOptions = {
+      // How zoomed in you want the map to start at (always required)
+      zoom: 13,
+
+      // The latitude and longitude to center the map (always required)
+      center: new google.maps.LatLng(32.8800949,-117.2392022), // New York
+
+      styles: [{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"on"},{"color":"#f3f4f4"}]},{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"weight":0.9},{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#83cead"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"},{"color":"#fee379"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"on"},{"color":"#fee379"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#7fc8ed"}]}]
+  };
+
+  var mapElement = document.getElementById('map');
+
+  // Create the Google Map using our element and options defined above
+  var map = new google.maps.Map(mapElement, mapOptions);
+
+  // Let's also add a marker while we're at it
+  var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(32.8850949,-117.24150022),
+      map: map,
+      title: 'UCSD'
+  });
+}
+
